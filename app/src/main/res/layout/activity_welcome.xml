@@ -33,33 +33,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <ImageView
-        android:id="@+id/signUp"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/signup"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
 
-    <ImageView
+    <Button
         android:id="@+id/login"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
+        android:layout_width="226dp"
+        android:layout_height="54dp"
         android:layout_marginStart="90dp"
         android:layout_marginTop="43dp"
         android:layout_marginEnd="90dp"
         android:layout_marginBottom="25dp"
-        android:src="@drawable/login"
+        android:background="@drawable/login"
         app:layout_constraintBottom_toTopOf="@+id/signUp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="226dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/signup"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <ImageView
         android:id="@+id/circle"
