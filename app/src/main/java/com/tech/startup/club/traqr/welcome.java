@@ -23,8 +23,7 @@ public class welcome extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(this, LoginActivity.class);
-//                startActivity(intent);
+                setContentView(R.layout.activity_login);
             }
         });
 
