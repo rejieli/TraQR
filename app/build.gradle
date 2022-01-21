@@ -9,13 +9,14 @@ android {
     defaultConfig {
         applicationId "com.tech.startup.club.traqr"
         minSdk 21
+
         targetSdk 31
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+//Test
     buildTypes {
         release {
             minifyEnabled false
