@@ -31,6 +31,7 @@ public class welcome extends AppCompatActivity {
 
     private Button login;
     private Button signIn;
+    //Test comment
 
     private static final int RC_SIGN_IN = 100;//TODO change
     private static final String TAG = "GOOGLE_SIGN_IN_TAG";
