@@ -1,4 +1,4 @@
-package com.tech.startup.club.traqr;
+package com.tech.startup.club.traqr.welcome;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityWelcomeBinding;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
