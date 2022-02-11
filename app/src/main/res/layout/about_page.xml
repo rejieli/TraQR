@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="558dp"
+        android:layout_height="80dp"
+        android:text="How to use this app"
+        android:textSize="48sp"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="361dp"
+        android:layout_height="539dp"
+        android:text="Navigate by swiping, and you can sign in with google. Scan our QR codes to get "
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="140dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
