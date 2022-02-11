@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityLoginBinding;
+import com.tech.startup.club.traqr.welcome.welcome;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -60,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+        final Button forgotPass = binding.forgotPassword;
+        final Button newAcc = binding.newAcc;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -135,6 +138,20 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 signIn(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+            }
+        });
+
+        newAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), welcome.class);
+                startActivity(intent);
+            }
+        });
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
