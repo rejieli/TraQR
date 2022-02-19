@@ -25,13 +25,8 @@
         android:layout_width="226dp"
         android:layout_height="54dp"
         android:layout_marginStart="90dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/login"
-        app:layout_constraintBottom_toTopOf="@+id/signUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -39,15 +34,9 @@
         android:id="@+id/signUp"
         android:layout_width="226dp"
         android:layout_height="54dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/signup"
-        app:layout_constraintBottom_toTopOf="@+id/circle2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <ImageView
