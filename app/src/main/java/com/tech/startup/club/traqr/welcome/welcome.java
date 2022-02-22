@@ -26,6 +26,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
 import com.tech.startup.club.traqr.databinding.ActivityWelcomeBinding;
+import com.tech.startup.club.traqr.db.networkDB;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 public class welcome extends AppCompatActivity {
