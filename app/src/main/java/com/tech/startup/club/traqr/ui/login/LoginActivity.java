@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tech.startup.club.traqr.db.networkDB;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityLoginBinding;
@@ -164,6 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            networkDB.createNetwork("test",user, LoginActivity.this);
                             Toast.makeText(LoginActivity.this, user.getUid(),
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), Camera.class);
