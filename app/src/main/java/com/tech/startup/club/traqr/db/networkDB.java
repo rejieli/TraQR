@@ -25,7 +25,7 @@ public class networkDB {
     public static void createNetwork(String displayTitle, FirebaseUser user, Context context){
         HashMap<String, Object> networkData = new HashMap<>();
         networkData.put("networkID", UUID.randomUUID());
-        networkData.put("manager", user);
+        networkData.put("manager", user.getUid());
 
         // Add a new document with a generated ID
         db.collection("networks")

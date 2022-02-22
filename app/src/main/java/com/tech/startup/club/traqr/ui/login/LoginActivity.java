@@ -42,9 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     private static final String TAG = "EmailPassword";
-    // [START declare_auth]
+
     private FirebaseAuth mAuth;
-    // [END declare_auth]
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         final Button newAcc = binding.newAcc;
         final ProgressBar loadingProgressBar = binding.loading;
 
+        //Checking if theres an error in user's text
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -126,19 +127,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
+//                    loginViewModel.login(usernameEditText.getText().toString(),
+//                            passwordEditText.getText().toString());
+                    signIn(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
                 }
                 return false;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                signIn(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
             }
         });
 
@@ -165,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            networkDB.createNetwork("test",user, LoginActivity.this);
+//                            networkDB.createNetwork("test",user, LoginActivity.this); TEST LINE DO NOT REMOVE
                             Toast.makeText(LoginActivity.this, user.getUid(),
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), Camera.class);
