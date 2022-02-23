@@ -6,19 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".homepage.Camera">
 
+
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="367dp"
-        android:layout_height="290dp"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="116dp" />
+        android:layout_width="386dp"
+        android:layout_height="543dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/bt_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="485dp" />
+        android:text="open camera"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,7 @@ import com.tech.startup.club.traqr.welcome.welcome;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+
     private ActivityLoginBinding binding;
 
     private static final String TAG = "EmailPassword";
