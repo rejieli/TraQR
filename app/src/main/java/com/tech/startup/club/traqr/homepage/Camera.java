@@ -11,10 +11,13 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tech.startup.club.traqr.R;
 
 public class Camera extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     ImageView imageview;
     Button btOpen;
 
@@ -23,21 +26,11 @@ public class Camera extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         imageview = findViewById(R.id.imageView3);
-        btOpen = findViewById(R.id.bt_open);
+        btOpen = findViewById(R.id.bt_cam);
+        mAuth = FirebaseAuth.getInstance();
+        TextView tv1 = (TextView)findViewById(R.id.textcam);
+        tv1.setText(mAuth.getCurrentUser().getUid());
 
-        btOpen.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent open = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(open, 100);
-            }
-        });
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Bitmap photo = (Bitmap)data.getExtras().get("data");
-        imageview.setImageBitmap(photo);
     }
 }

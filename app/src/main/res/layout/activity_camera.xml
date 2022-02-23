@@ -7,6 +7,13 @@
     tools:context=".homepage.Camera">
 
 
+    <TextView
+        android:id="@+id/textcam"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="31dp" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="386dp"
@@ -20,7 +27,7 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
-        android:id="@+id/bt_open"
+        android:id="@+id/bt_cam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="open camera"
