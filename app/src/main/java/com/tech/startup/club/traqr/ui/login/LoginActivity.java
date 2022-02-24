@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-//                            networkDB.createNetwork("test",user, LoginActivity.this); TEST LINE DO NOT REMOVE
+ //                           networkDB.createNetwork("test",user, LoginActivity.this); TEST LINE DO NOT REMOVE
                             Toast.makeText(LoginActivity.this, user.getUid(),
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), Camera.class);
