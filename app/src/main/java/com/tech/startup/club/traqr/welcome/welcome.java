@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
 import com.tech.startup.club.traqr.databinding.ActivityWelcomeBinding;
@@ -34,6 +35,7 @@ public class welcome extends AppCompatActivity {
     private Button login;
     private Button signIn;
     private Button signUp;
+    private Button qrCode;
     //Test comment
 
     private static final int RC_SIGN_IN = 100;//TODO change

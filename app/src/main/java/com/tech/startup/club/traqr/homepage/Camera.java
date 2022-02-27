@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,9 +23,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
 import com.tech.startup.club.traqr.R;
 
 public class Camera extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private Button qrCode;
     ImageView imageview;
     Button btOpenCam;
 
@@ -39,6 +47,16 @@ public class Camera extends AppCompatActivity {
             }, 100);
 
         }
+
+        //temporary qrcode button
+        qrCode = (Button) findViewById(R.id.qrcode);
+        qrCode.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRCodeGenerator.class);
+                startActivity(intent);
+            }
+        });
 
         btOpenCam.setOnClickListener(v -> {
             Intent open = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
