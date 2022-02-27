@@ -39,6 +39,7 @@ import com.tech.startup.club.traqr.welcome.welcome;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+
     private ActivityLoginBinding binding;
 
     private static final String TAG = "EmailPassword";
@@ -159,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-//                            networkDB.createNetwork("test",user, LoginActivity.this); TEST LINE DO NOT REMOVE
+ //                           networkDB.createNetwork("test",user, LoginActivity.this); TEST LINE DO NOT REMOVE
                             Toast.makeText(LoginActivity.this, user.getUid(),
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), Camera.class);
