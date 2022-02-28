@@ -17,7 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.userDB;
 import com.tech.startup.club.traqr.homepage.Camera;
+import com.tech.startup.club.traqr.model.User;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 public class Sign_Up extends AppCompatActivity {

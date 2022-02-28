@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.protobuf.Timestamp;
+import com.tech.startup.club.traqr.model.Item;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -20,18 +21,11 @@ public class itemDB {
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     //tracks user into
-    public static void addItem(FirebaseUser user, String name, HashMap<String, String> fields, String networkID, Context context){
-        HashMap<String, Object> itemData = new HashMap<>();
-        itemData.put("networkID", networkID);
-        itemData.put("itemID", UUID.randomUUID().toString());
-        itemData.put("name", name);
-        itemData.put("lastScannedUser", user);
-        itemData.put("lastScannedDate", Timestamp.newBuilder().getNanos());
-        itemData.putAll(fields);
+    public static void addItem(Item item, Context context){
 
         // Add a new document with a generated ID
         db.collection("items")
-                .add(itemData)
+                .add(item)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

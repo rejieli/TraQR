@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
+import com.tech.startup.club.traqr.model.Network;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,16 +22,11 @@ public class networkDB {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    //tracks user into
-    public static void createNetwork(String displayTitle, FirebaseUser user, Context context){
-        HashMap<String, Object> networkData = new HashMap<>();
-        networkData.put("networkName", displayTitle);
-        networkData.put("networkID", UUID.randomUUID().toString());
-        networkData.put("manager", user.getUid());
+    public static void createNetwork(Network network, Context context){
 
-        // Add a new document with a generated ID
+        // Add a new network
         db.collection("networks")
-                .add(networkData)
+                .add(network)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

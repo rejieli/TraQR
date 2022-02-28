@@ -2,6 +2,9 @@ package com.tech.startup.club.traqr.QRCode;
 
 import android.util.Base64;
 
+import com.tech.startup.club.traqr.model.Item;
+import com.tech.startup.club.traqr.model.Network;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -12,8 +15,20 @@ public class QREncrypt {
 
     private static String encrpytAlgo = "Blowfish";
 
-    //maybe convert to NetworkID Class
-    public static byte[] encrypt(String strClearText,String strKey) throws Exception{
+    public static String encryptQRPlainText(Network network, Item item) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TraQR;" + network.getNetworkID() + ";" + item.getItemID());
+        String encryptedData = Arrays.toString(encrypt(sb.toString(), network.getNetworkID()));
+        return encryptedData;
+    }
+
+    //THIS DOES NOT WORK YET
+    public static String decryptQRPlainText(String encryptedText, Network network) throws Exception {
+        return decrypt(encryptedText.getBytes(StandardCharsets.UTF_8), network.getNetworkID());
+    }
+
+
+    private static byte[] encrypt(String strClearText,String strKey) throws Exception{
         byte[] encrypted = new byte[0];
 
         try {
@@ -29,7 +44,7 @@ public class QREncrypt {
         return encrypted;
     }
 
-    public static String decrypt(byte[] strEncrypted,String strKey) throws Exception{
+    private static String decrypt(byte[] strEncrypted,String strKey) throws Exception{
         String strData="";
 
         try {
@@ -45,6 +60,7 @@ public class QREncrypt {
         }
         return strData;
     }
+
 
 
 }
