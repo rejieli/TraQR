@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tech.startup.club.traqr">
 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TraQR"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".QRCode.QRCodeGenerator"
+            android:exported="false" />
         <activity
             android:name=".Signin.Sign_Up"
             android:exported="false" />
@@ -25,7 +32,6 @@
                 <category android:name="android.intent.category.TAB" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".welcome.welcome"
             android:exported="true"
@@ -36,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
