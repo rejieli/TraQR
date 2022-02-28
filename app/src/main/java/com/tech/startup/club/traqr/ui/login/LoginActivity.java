@@ -35,6 +35,7 @@ import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityLoginBinding;
 import com.tech.startup.club.traqr.welcome.welcome;
+import com.tech.startup.club.traqr.Signin.Sign_Up;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = binding.username;
+        final EditText usernameEditText = binding.email;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
         final Button forgotPass = binding.forgotPassword;
@@ -140,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
         newAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), welcome.class);
+                Intent intent = new Intent(getApplicationContext(), Sign_Up.class);
                 startActivity(intent);
             }
         });

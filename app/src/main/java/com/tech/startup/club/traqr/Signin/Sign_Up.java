@@ -35,6 +35,7 @@ public class Sign_Up extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         final EditText usernameEditText = (EditText)findViewById(R.id.username);
+        final EditText emailEditText = (EditText)findViewById(R.id.email);
         final EditText passwordEditText = (EditText)findViewById(R.id.password);
         final EditText confirmPasswordEditText = (EditText)findViewById(R.id.confirm_password);
         final Button signInButton = (Button) findViewById(R.id.signUp);
@@ -45,12 +46,19 @@ public class Sign_Up extends AppCompatActivity {
                 try {
                     if (passwordEditText.getText().toString().equals(confirmPasswordEditText.getText().toString())) {
                         //TODO if user exists
-                        signUp(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                        signUp(emailEditText.getText().toString(), passwordEditText.getText().toString());
                     }
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
+                    else {
+                        Toast.makeText(Sign_Up.this, "Passwords do not match",
+                                Toast.LENGTH_SHORT).show();
+
+                        passwordEditText.setText("");
+                        confirmPasswordEditText.setText("");
+                    }
+                    /*Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);*/
                 }catch(Exception e){
-                    usernameEditText.setText("ERROR");
+
                 }
 
             }
@@ -58,6 +66,11 @@ public class Sign_Up extends AppCompatActivity {
     }
 
     private void signUp(String email, String password) {
+        final EditText usernameEditText = (EditText)findViewById(R.id.username);
+        final EditText emailEditText = (EditText)findViewById(R.id.email);
+        final EditText passwordEditText = (EditText)findViewById(R.id.password);
+        final EditText confirmPasswordEditText = (EditText)findViewById(R.id.confirm_password);
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -74,6 +87,11 @@ public class Sign_Up extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(Sign_Up.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+
+                            usernameEditText.setText("");
+                            emailEditText.setText("");
+                            passwordEditText.setText("");
+                            confirmPasswordEditText.setText("");
                         }
                     }
                 });
