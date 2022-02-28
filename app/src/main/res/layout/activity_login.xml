@@ -5,6 +5,9 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    android:backgroundTint="#00FFFFFF"
+    android:foregroundTint="#00FFFFFF"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,7 +15,7 @@
     tools:context=".ui.login.LoginActivity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:autofillHints="@string/prompt_email"
@@ -95,7 +98,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
         android:text="Click here"
+        android:textColor="#3F51B5"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -103,7 +110,11 @@
         android:id="@+id/newAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
         android:text="Click here"
+        android:textColor="#3F51B5"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
@@ -113,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="Email"
-        android:textColor="#000000"
+        android:textColor="#646464"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -123,21 +134,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
-        android:textColor="#000000"
+        android:textColor="#646464"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="100dp"
         android:text="Forgot password?"
-        android:textColor="#000000"
+        android:textColor="#646464"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <TextView
@@ -146,8 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Don't have an account?"
-        android:textColor="#000000"
+        android:textColor="#646464"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
