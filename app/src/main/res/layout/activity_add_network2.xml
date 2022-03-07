@@ -6,4 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".network.AddNetwork">
 
+    <Button
+        android:id="@+id/addNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="269dp"
+        android:text="Create Network"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/networkName" />
+
+    <EditText
+        android:id="@+id/networkName"
+        android:layout_width="351dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addNetwork"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/networkNameDisplay2" />
+
+    <TextView
+        android:id="@+id/networkNameDisplay"
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="187dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="serif"
+        android:text="Create New Network"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/networkNameDisplay2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/networkNameDisplay2"
+        android:layout_width="183dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="serif"
+        android:text="Network Name"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/networkName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/networkNameDisplay" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="131dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="254dp"
+        android:layout_marginBottom="23dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@+id/networkNameDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="216dp"
+        android:layout_height="257dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginBottom="36dp"
+        android:src="@drawable/circle"
+        app:layout_constraintBottom_toTopOf="@+id/networkNameDisplay"
+        app:layout_constraintStart_toEndOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="216dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/circle"
+        app:layout_constraintEnd_toStartOf="@+id/addNetwork"
+        app:layout_constraintTop_toBottomOf="@+id/addNetwork" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -20,15 +21,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.network.AddNetwork;
+import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import androidmads.library.qrgenearator.QRGSaver;
 
 public class QRCodeGenerator extends AppCompatActivity {
-    EditText qrvalue;
-    Button generateBtn;
-    ImageView qrImage;
+    private EditText qrvalue;
+    private Button generateBtn;
+    private ImageView qrImage;
     private String inputValue;
     private String savePath = Environment.getExternalStorageDirectory().getPath() + "/QRCode/";
     private Bitmap bitmap;
@@ -74,6 +77,7 @@ public class QRCodeGenerator extends AppCompatActivity {
                 }
         }
     });
+        //Action Listener for save button
         findViewById(R.id.save_barcode).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +93,15 @@ public class QRCodeGenerator extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
                 }
+            }
+        });
+
+        //Action listener for create network button
+        findViewById(R.id.addNetwork).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddNetwork.class);
+                startActivity(intent);
             }
         });
 }
