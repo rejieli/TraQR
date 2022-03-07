@@ -16,7 +16,7 @@ import com.tech.startup.club.traqr.model.Item;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class itemDB {
+public class ItemDB {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
