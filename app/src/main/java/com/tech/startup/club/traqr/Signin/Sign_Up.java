@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tech.startup.club.traqr.R;
-import com.tech.startup.club.traqr.db.userDB;
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.model.User;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
@@ -48,7 +48,7 @@ public class Sign_Up extends AppCompatActivity {
                 try {
                     if (passwordEditText.getText().toString().equals(confirmPasswordEditText.getText().toString())) {
                         //TODO if user exists
-                        signUp(emailEditText.getText().toString(), passwordEditText.getText().toString());
+                        signUp(usernameEditText.getText().toString(),emailEditText.getText().toString(), passwordEditText.getText().toString());
                     }
                     else {
                         Toast.makeText(Sign_Up.this, "Passwords do not match",
@@ -67,7 +67,7 @@ public class Sign_Up extends AppCompatActivity {
         });
     }
 
-    private void signUp(String email, String password) {
+    private void signUp(String name, String email, String password) {
         final EditText usernameEditText = (EditText)findViewById(R.id.username);
         final EditText emailEditText = (EditText)findViewById(R.id.email);
         final EditText passwordEditText = (EditText)findViewById(R.id.password);
@@ -78,10 +78,21 @@ public class Sign_Up extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            //log
                             Log.d(TAG, "signInWithEmail:success");
+
+                            //gets users auth
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //Create new User in DB (NOT PART OF AUTHENTICATION)
+                            User newUser = new User(name, email);
+                            UserDB.createUser(newUser, Sign_Up.this);
+
+                            //Notify user of successful creation of new user
                             Toast.makeText(Sign_Up.this, user.getUid(),
                                     Toast.LENGTH_SHORT).show();
+
+                            //Start new intent (start camera class)
                             Intent intent = new Intent(getApplicationContext(), Camera.class);
                             startActivity(intent);
                         } else {
@@ -90,6 +101,7 @@ public class Sign_Up extends AppCompatActivity {
                             Toast.makeText(Sign_Up.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
+                            //clear usernames
                             usernameEditText.setText("");
                             emailEditText.setText("");
                             passwordEditText.setText("");

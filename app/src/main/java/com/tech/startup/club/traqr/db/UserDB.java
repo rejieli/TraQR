@@ -17,7 +17,7 @@ import com.tech.startup.club.traqr.model.User;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class userDB {
+public class UserDB {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 

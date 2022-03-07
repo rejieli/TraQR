@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tech.startup.club.traqr">
 
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TraQR"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".network.AddNetwork"
+            android:exported="false" />
         <activity
             android:name=".QRCode.QRCodeGenerator"
             android:exported="false" />
