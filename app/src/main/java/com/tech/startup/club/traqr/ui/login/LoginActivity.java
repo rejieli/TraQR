@@ -61,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
+        final TextView username = binding.textView4;
+        final TextView password = binding.textView5;
         final EditText usernameEditText = binding.email;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
@@ -123,7 +125,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         usernameEditText.addTextChangedListener(afterTextChangedListener);
+        usernameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, boolean hasfocus) {
+                if (hasfocus) {
+                    usernameEditText.setHint("");
+                    username.setText("Email");
+                } else {
+                    usernameEditText.setHint("Email");
+                    username.setText("");
+                }
+            }
+        });
         passwordEditText.addTextChangedListener(afterTextChangedListener);
+        passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View arg0, boolean hasfocus) {
+                if (hasfocus) {
+                    passwordEditText.setHint("");
+                    password.setText("Password");
+                } else {
+                    passwordEditText.setHint("Password");
+                    password.setText("");
+                }
+            }
+        });
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
