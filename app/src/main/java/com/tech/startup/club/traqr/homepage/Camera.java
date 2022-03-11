@@ -66,6 +66,13 @@ public class Camera extends AppCompatActivity {
             }
         });
 
+                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
+                );
+                intentIntegrator.setBeepEnabled(true);
+                intentIntegrator.setOrientationLocked(true);
+                intentIntegrator.setCaptureActivity(Capture.class);
+                intentIntegrator.initiateScan();
+
         btOpenCam.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -78,6 +85,8 @@ public class Camera extends AppCompatActivity {
                 }
             });
         }
+
+
 
     public boolean onTouchEvent(MotionEvent touchEvent){
         switch(touchEvent.getAction()){
