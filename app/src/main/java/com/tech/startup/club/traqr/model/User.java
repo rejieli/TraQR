@@ -55,4 +55,14 @@ public class User {
     public void addNetwork(Network network) {
         networks.add(network.getNetworkID());
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", networks=" + networks +
+                '}';
+    }
 }
