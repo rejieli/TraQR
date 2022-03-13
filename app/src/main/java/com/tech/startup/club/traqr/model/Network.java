@@ -1,6 +1,9 @@
 package com.tech.startup.club.traqr.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Network {
@@ -8,11 +11,17 @@ public class Network {
     private String networkName;
     private final String networkID;
     private String manager;
+    private List<String> authUsers;
 
-    public Network(String networkName, String manager, String networkID){
+    public Network(String networkName, String manager, String networkID, List<String> authUsers){
         this.networkName = networkName;
         this.manager = manager;
         this.networkID = networkID;
+        authUsers = new ArrayList<String>();
+    }
+
+    public Network(String networkName, String manager, String networkID){
+        this(networkName, manager, networkID, Arrays.asList());
     }
 
     public Network(String networkName, String manager){
@@ -39,12 +48,21 @@ public class Network {
         this.manager = manager;
     }
 
-    public HashMap<String, Object> toHashMap(){
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("networkName", networkName);
-        map.put("networkID", networkID);
-        map.put("manager", manager);
-        return map;
+    public List<String> getAuthUsers() {
+        return authUsers;
     }
 
+    public void setAuthUsers(List<String> authUsers) {
+        this.authUsers = authUsers;
+    }
+
+    @Override
+    public String toString() {
+        return "Network{" +
+                "networkName='" + networkName + '\'' +
+                ", networkID='" + networkID + '\'' +
+                ", manager='" + manager + '\'' +
+                ", authUsers=" + authUsers +
+                '}';
+    }
 }
