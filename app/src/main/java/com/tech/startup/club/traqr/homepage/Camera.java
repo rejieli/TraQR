@@ -66,12 +66,12 @@ public class Camera extends AppCompatActivity {
             }
         });
 
-                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
-                );
-                intentIntegrator.setBeepEnabled(true);
-                intentIntegrator.setOrientationLocked(true);
-                intentIntegrator.setCaptureActivity(Capture.class);
-                intentIntegrator.initiateScan();
+//                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
+//                );
+//                intentIntegrator.setBeepEnabled(true);
+//                intentIntegrator.setOrientationLocked(true);
+//                intentIntegrator.setCaptureActivity(Capture.class);
+//                intentIntegrator.initiateScan();
 
         btOpenCam.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -100,9 +100,12 @@ public class Camera extends AppCompatActivity {
                 if(x1 < x2){
                 Intent i = new Intent(Camera.this, item.class);
                 startActivity(i);
-            }else if(x1 > x2){
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+                }else if(x1 > x2){
                 Intent i = new Intent(Camera.this, profile.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
             break;
         }
