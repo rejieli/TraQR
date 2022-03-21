@@ -32,6 +32,7 @@ public class item extends AppCompatActivity {
                 if(x1 > x2){
                     Intent i = new Intent(item.this, Camera.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
                 break;
         }
