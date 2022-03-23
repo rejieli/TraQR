@@ -120,4 +120,29 @@ public class UserDB {
             }
         });
     }
+
+    //TODO TEST METHOD
+    public static void getUserNetworks(FirebaseUser user){
+        //generating query
+        Query query = db.collection("users").whereEqualTo("uuid", user.getUid());
+        //list of users found in db
+        List<User> foundUsers = new ArrayList<User>();
+
+        //excuting query
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        //getting current networks
+                        List<String> s = (List<String>) document.get("networks");
+                        break;
+                    }
+                }  else {
+                    System.err.println("USER COULD NOT BE FOUND");
+                }
+            }
+        });
+    }
+
 }

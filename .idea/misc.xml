@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/caleb/Tech Start Up/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.23596014492753623" />
         <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_item.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_profile.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/about_page.xml" value="0.1" />
@@ -23,6 +23,12 @@
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR2/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24866131191432397" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_add_network2.xml" value="0.25" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.25" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_item_data.xml" value="0.25" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_qrcode_generator.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.25" />
       </map>
     </option>
   </component>

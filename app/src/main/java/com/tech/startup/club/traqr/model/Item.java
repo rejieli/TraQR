@@ -2,11 +2,12 @@ package com.tech.startup.club.traqr.model;
 
 import com.google.firebase.Timestamp;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class Item {
+public class Item implements Serializable {
 
     private final String networkID;
     private final String itemID;
@@ -66,5 +67,17 @@ public class Item {
 
     public void setFields(HashMap<String, Object> fields) {
         this.fields = fields;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "networkID='" + networkID + '\'' +
+                ", itemID='" + itemID + '\'' +
+                ", name='" + name + '\'' +
+                ", lastScanned=" + lastScanned +
+                ", lastScannedUserID='" + lastScannedUserID + '\'' +
+                ", fields=" + fields +
+                '}';
     }
 }
