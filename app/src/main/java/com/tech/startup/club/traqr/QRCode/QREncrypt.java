@@ -7,6 +7,7 @@ import com.tech.startup.club.traqr.model.Network;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -15,16 +16,16 @@ public class QREncrypt {
 
     private static String encrpytAlgo = "Blowfish";
 
-    public static String encryptQRPlainText(Network network, Item item) throws Exception {
+    public static String encryptQRPlainText(String networkID, Item item) throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append("TraQR;" + network.getNetworkID() + ";" + item.getItemID());
-        String encryptedData = Arrays.toString(encrypt(sb.toString(), network.getNetworkID()));
+        sb.append("TraQR;" + networkID + ";" + item.getItemID());
+        String encryptedData = Arrays.toString(encrypt(sb.toString(), networkID));
         return encryptedData;
     }
 
     //THIS DOES NOT WORK YET
-    public static String decryptQRPlainText(String encryptedText, Network network) throws Exception {
-        return decrypt(encryptedText.getBytes(StandardCharsets.UTF_8), network.getNetworkID());
+    public static String decryptQRPlainText(String encryptedText, String networkID) throws Exception {
+        return decrypt((encryptedText.getBytes(StandardCharsets.UTF_8)), networkID);
     }
 
 
