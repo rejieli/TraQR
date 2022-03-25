@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
 import com.tech.startup.club.traqr.QRCode.QREncrypt;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.db.ItemDB;
@@ -51,12 +52,13 @@ public class AddItem extends AppCompatActivity {
                 HashMap<String, Object> map = new HashMap<>();
                 Item item = new Item("925889db-22f5-4d58-9887-e927742ae40f", name, mAuth.getCurrentUser().getUid(), map);
                 ItemDB.addItem(item, AddItem.this);
-                Intent i = new Intent(AddItem.this, item.class);
-                startActivity(i);
                 try {
                     String encrypt = QREncrypt.encryptQRPlainText("925889db-22f5-4d58-9887-e927742ae40f", item);
-                    System.out.println("encrypt: " + encrypt);;
+                    System.out.println("encrypt: " + encrypt);
                     String decrypt = QREncrypt.decryptQRPlainText(encrypt, "925889db-22f5-4d58-9887-e927742ae40f");
+                    Intent i = new Intent(AddItem.this, QRCodeGenerator.class);
+                    i.putExtra("Encrypt", encrypt);
+                    startActivity(i);
 
                     System.out.println("decrypt: " + decrypt);
                 } catch (Exception e) {
