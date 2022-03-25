@@ -35,12 +35,12 @@ public class Camera extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button qrCode;
-    ImageView imageview;
-    Button btOpenCam;
-    float x1;
-    float x2;
-    float y1;
-    float y2;
+    private ImageView imageview;
+    private Button btOpenCam;
+    private float x1;
+    private float x2;
+    private float y1;
+    private float y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Camera extends AppCompatActivity {
             }, 100);
         }
 
-        //temporary qrcode button
+        //Add new network
         Button addNetwork = (Button) findViewById(R.id.addNetwork);
         addNetwork.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,28 +66,10 @@ public class Camera extends AppCompatActivity {
             }
         });
 
-        //temporary qrcode button
-        qrCode = (Button) findViewById(R.id.qrcode);
-        qrCode.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRCodeGenerator.class);
-                startActivity(intent);
-            }
-        });
-
-//                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
-//                );
-//                intentIntegrator.setBeepEnabled(true);
-//                intentIntegrator.setOrientationLocked(true);
-//                intentIntegrator.setCaptureActivity(Capture.class);
-//                intentIntegrator.initiateScan();
-
         btOpenCam.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
-                );
+                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this);
                 intentIntegrator.setBeepEnabled(true);
                 intentIntegrator.setOrientationLocked(true);
                 intentIntegrator.setCaptureActivity(Capture.class);
@@ -95,8 +77,6 @@ public class Camera extends AppCompatActivity {
                 }
             });
         }
-
-
 
     public boolean onTouchEvent(MotionEvent touchEvent){
         switch(touchEvent.getAction()){

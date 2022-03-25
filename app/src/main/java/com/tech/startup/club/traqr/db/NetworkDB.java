@@ -89,15 +89,15 @@ public class NetworkDB {
         });
     }
 
-    //TODO TEST FUNCTION
+    //TODO MAKE FUNCTION
     public static void getNetworkNames(List<String> networkId){
 
     }
 
     //TODO TEST FUNCTION
-    public static void removeAuthUserNetwork(Network network, User user){
+    public static void removeAuthUserNetwork(String networkID, String userID){
         //query to find network
-        Query query = db.collection("networks").whereEqualTo("networkID", network.getNetworkID());
+        Query query = db.collection("networks").whereEqualTo("networkID", networkID);
         //list of users found in db
         List<Network> foundNetworks = new ArrayList<Network>();
 
@@ -110,7 +110,7 @@ public class NetworkDB {
                         //getting current auth users
                         List<String> s = (List<String>) document.get("authUsers");
                         //removing new networks
-                        s.remove(s.indexOf(user.getUuid()));
+                        s.remove(s.indexOf(userID));
                         //querying back into db
                         document.getReference().update("authUsers", s).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

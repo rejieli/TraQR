@@ -2,6 +2,7 @@ package com.tech.startup.club.traqr.QRCode;
 
 import android.util.Base64;
 
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.model.Item;
 import com.tech.startup.club.traqr.model.Network;
 import com.tech.startup.club.traqr.utils.Utils;
@@ -24,9 +25,21 @@ public class QREncrypt {
         return encryptedData;
     }
 
-    //THIS DOES NOT WORK YET
     public static String decryptQRPlainText(String encryptedText, String networkID) throws Exception {
-        return decrypt(Utils.stringToByteArray(encryptedText), networkID);
+        //checking all avalible networks
+        List<String> avaliableNetworks = UserDB.getUserNetworks();
+        //ensuring there is at least one network
+        if(avaliableNetworks.size()==0){
+            return "";
+        }
+        //checking all networks to see if item exist
+        for(int i = 0; i < avaliableNetworks.size(); i++){
+            String code = decrypt(Utils.stringToByteArray(encryptedText), avaliableNetworks.get(i));
+            if(code.length()>6 && code.substring(0,6).contains("TraQR")){
+                return code;
+            }
+        }
+        return "";
     }
 
 
