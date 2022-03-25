@@ -29,4 +29,18 @@ public class Utils {
         return list;
     }
 
+    public static byte[] stringToByteArray(String s){
+        //Convert to array
+        List<String> list = Arrays.asList(s.substring(1, s.length() - 1).split(", "));
+        byte[] byteArray = new byte[list.size()];
+
+        //to byte array
+        for(int i = 0; i < list.size(); i++){
+            byteArray[i] = (byte) Integer.parseInt(list.get(i));
+        }
+        return byteArray;
+
+    }
+
+
 }
