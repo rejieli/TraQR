@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
@@ -48,6 +49,8 @@ public class welcome extends AppCompatActivity {
         //check if user is already logged in
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user!=null){//if there is user logged in
+            //getting user data
+            UserDB.getUserNetworks(user);
             Intent intent = new Intent(getApplicationContext(), Camera.class);
             startActivity(intent);
         }//otherwise, keep on same page

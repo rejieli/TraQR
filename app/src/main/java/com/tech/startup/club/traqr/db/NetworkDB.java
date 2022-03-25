@@ -90,6 +90,11 @@ public class NetworkDB {
     }
 
     //TODO TEST FUNCTION
+    public static void getNetworkNames(List<String> networkId){
+
+    }
+
+    //TODO TEST FUNCTION
     public static void removeAuthUserNetwork(Network network, User user){
         //query to find network
         Query query = db.collection("networks").whereEqualTo("networkID", network.getNetworkID());

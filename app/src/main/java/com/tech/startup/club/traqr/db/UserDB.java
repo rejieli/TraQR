@@ -30,6 +30,8 @@ import java.util.Map;
 public class UserDB {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static List<String> userNetworks = new ArrayList<String>();
+    private static String selectedNetwork = "";
 
     //ONLY ADDS USER TO DB, NOT USER DB
     public static void createUser(User user, Context context){
@@ -135,7 +137,8 @@ public class UserDB {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         //getting current networks
-                        List<String> s = (List<String>) document.get("networks");
+                        userNetworks = (List<String>) document.get("networks");
+                        sortNetwork();
                         break;
                     }
                 }  else {
@@ -145,4 +148,30 @@ public class UserDB {
         });
     }
 
+    public static List<String> getUserNetworks() {
+        return userNetworks;
+    }
+
+    public static void setUserNetworks(List<String> userNetworks) {
+        UserDB.userNetworks = userNetworks;
+    }
+
+    public static String getSelectedNetwork() {
+        return selectedNetwork;
+    }
+
+    public static void setSelectedNetwork(String selectedNetwork) {
+        UserDB.selectedNetwork = selectedNetwork;
+        sortNetwork();
+    }
+
+    public static void sortNetwork(){
+        if(userNetworks.size()<=0||selectedNetwork.equals("")){
+            return;
+        }
+        //resorting networks
+        int itemPos = userNetworks.indexOf(selectedNetwork);
+        userNetworks.remove(itemPos);
+        userNetworks.add(0, selectedNetwork );
+    }
 }

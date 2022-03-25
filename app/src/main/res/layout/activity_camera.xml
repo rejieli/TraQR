@@ -32,6 +32,23 @@
         app:layout_constraintVertical_bias="0.574"
         app:srcCompat="@mipmap/ic_launcher" />
 
+
+    <Button
+        android:id="@+id/addNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="217dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="644dp"
+        android:text="Create New Network"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textcam"
+        app:layout_constraintVertical_bias="1.0" />
+
     <Button
         android:id="@+id/bt_cam"
         android:layout_width="wrap_content"
@@ -39,10 +56,10 @@
         android:text="open camera"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
-
+        app:layout_constraintVertical_bias="0.65" />
 
     <Button
         android:id="@+id/qrcode"

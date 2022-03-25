@@ -3,19 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/caleb/Tech Start Up/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/drawable/round_button.xml" value="0.3828125" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_add_item.xml" value="0.3088768115942029" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.23052536231884058" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_item.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_profile.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/kevin/TraQR/app/src/main/res/layout/activity_qrcode_generator.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/about_page.xml" value="0.1" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.264" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/activity_qrcode_generator.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
-        <entry key="..\:/Users/kevin/traqr/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1" />
@@ -26,7 +13,18 @@
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
         <entry key="..\:/Users/khali/traqr/TraQR/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/about_page.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/activity_add_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/activity_camera.xml" value="0.33" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/activity_profile.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/activity_qrcode_generator.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/rejie/AndroidStudioProjects/TraQR2/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24866131191432397" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/about_page.xml" value="0.12760416666666666" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_add_network2.xml" value="0.264" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_qrcode_generator.xml" value="0.264" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/activity_welcome.xml" value="0.12760416666666666" />
+        <entry key="..\:/Users/rejie/OneDrive/Documents/Tech Startup Club/TraQR/app/src/main/res/layout/fragment_first.xml" value="0.12760416666666666" />
       </map>
     </option>
   </component>
