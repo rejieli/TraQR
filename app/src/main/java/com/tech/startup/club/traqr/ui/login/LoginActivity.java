@@ -181,7 +181,8 @@ public class LoginActivity extends AppCompatActivity {
                 nextPage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setContentView(R.layout.activity_login);
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
                         FirebaseAuth.getInstance().sendPasswordResetEmail(forgotPassEmail.getText().toString())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
