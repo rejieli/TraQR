@@ -31,10 +31,12 @@ import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.tech.startup.club.traqr.db.NetworkDB;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityLoginBinding;
+import com.tech.startup.club.traqr.homepage.Capture;
 import com.tech.startup.club.traqr.welcome.welcome;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
 

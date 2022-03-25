@@ -6,4 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".swipe.profile">
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="89dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="263dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="639dp"
+        android:background="#7846EC"
+        android:fontFamily="sans-serif-light"
+        android:text="logout"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="171dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="529dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/logout"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="266dp"
+        android:layout_height="262dp"
+        android:layout_marginTop="395dp"
+        android:layout_marginEnd="254dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/circle" />
+
+    <!--Spinner widget-->
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="266dp"
+        android:layout_height="262dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/networkSelector"
+        app:srcCompat="@drawable/circle" />
+
+    <Spinner
+        android:id="@+id/networkSelector"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="331dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/networks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="197dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Available Networks"
+        app:layout_constraintBottom_toTopOf="@+id/networkSelector"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

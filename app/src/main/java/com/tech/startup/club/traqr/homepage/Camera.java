@@ -26,6 +26,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.UserDB;
+import com.tech.startup.club.traqr.network.AddNetwork;
 import com.tech.startup.club.traqr.swipe.item;
 import com.tech.startup.club.traqr.swipe.profile;
 
@@ -33,12 +35,12 @@ public class Camera extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button qrCode;
-    ImageView imageview;
-    Button btOpenCam;
-    float x1;
-    float x2;
-    float y1;
-    float y2;
+    private ImageView imageview;
+    private Button btOpenCam;
+    private float x1;
+    private float x2;
+    private float y1;
+    private float y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +56,12 @@ public class Camera extends AppCompatActivity {
             }, 100);
         }
 
-
-
-        //temporary qrcode button
-        qrCode = (Button) findViewById(R.id.qrcode);
-        qrCode.setOnClickListener(new View.OnClickListener(){
+        //Add new network
+        Button addNetwork = (Button) findViewById(R.id.addNetwork);
+        addNetwork.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRCodeGenerator.class);
+                Intent intent = new Intent(getApplicationContext(), AddNetwork.class);
                 startActivity(intent);
             }
         });
@@ -69,8 +69,7 @@ public class Camera extends AppCompatActivity {
         btOpenCam.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this
-                );
+                IntentIntegrator intentIntegrator = new IntentIntegrator(Camera.this);
                 intentIntegrator.setBeepEnabled(true);
                 intentIntegrator.setOrientationLocked(true);
                 intentIntegrator.setCaptureActivity(Capture.class);
@@ -91,9 +90,12 @@ public class Camera extends AppCompatActivity {
                 if(x1 < x2){
                 Intent i = new Intent(Camera.this, item.class);
                 startActivity(i);
-            }else if(x1 > x2){
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+                }else if(x1 > x2){
                 Intent i = new Intent(Camera.this, profile.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
             break;
         }

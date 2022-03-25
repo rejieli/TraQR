@@ -2,11 +2,14 @@ package com.tech.startup.club.traqr.QRCode;
 
 import android.util.Base64;
 
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.model.Item;
 import com.tech.startup.club.traqr.model.Network;
+import com.tech.startup.club.traqr.utils.Utils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -15,16 +18,28 @@ public class QREncrypt {
 
     private static String encrpytAlgo = "Blowfish";
 
-    public static String encryptQRPlainText(Network network, Item item) throws Exception {
+    public static String encryptQRPlainText(String networkID, Item item) throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append("TraQR;" + network.getNetworkID() + ";" + item.getItemID());
-        String encryptedData = Arrays.toString(encrypt(sb.toString(), network.getNetworkID()));
+        sb.append("TraQR;" + networkID + ";" + item.getItemID());
+        String encryptedData = Arrays.toString(encrypt(sb.toString(), networkID));
         return encryptedData;
     }
 
-    //THIS DOES NOT WORK YET
-    public static String decryptQRPlainText(String encryptedText, Network network) throws Exception {
-        return decrypt(encryptedText.getBytes(StandardCharsets.UTF_8), network.getNetworkID());
+    public static String decryptQRPlainText(String encryptedText, String networkID) throws Exception {
+        //checking all avalible networks
+        List<String> avaliableNetworks = UserDB.getUserNetworks();
+        //ensuring there is at least one network
+        if(avaliableNetworks.size()==0){
+            return "";
+        }
+        //checking all networks to see if item exist
+        for(int i = 0; i < avaliableNetworks.size(); i++){
+            String code = decrypt(Utils.stringToByteArray(encryptedText), avaliableNetworks.get(i));
+            if(code.length()>6 && code.substring(0,6).contains("TraQR")){
+                return code;
+            }
+        }
+        return "";
     }
 
 

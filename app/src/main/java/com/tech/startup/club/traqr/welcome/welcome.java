@@ -2,17 +2,22 @@ package com.tech.startup.club.traqr.welcome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
+import com.tech.startup.club.traqr.db.UserDB;
+import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 public class welcome extends AppCompatActivity {
@@ -41,6 +46,15 @@ public class welcome extends AppCompatActivity {
 
         mGoogleSignInClient  = GoogleSignIn.getClient(this,gso);
 
+        //check if user is already logged in
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user!=null){//if there is user logged in
+            //getting user data
+            UserDB.getUserNetworks(user);
+            Intent intent = new Intent(getApplicationContext(), Camera.class);
+            startActivity(intent);
+        }//otherwise, keep on same page
+
         //login
         login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener(){
@@ -61,4 +75,5 @@ public class welcome extends AppCompatActivity {
             }
         });
     }
+
 }
