@@ -34,9 +34,17 @@ public class QREncrypt {
         }
         //checking all networks to see if item exist
         for(int i = 0; i < avaliableNetworks.size(); i++){
-            String code = decrypt(Utils.stringToByteArray(encryptedText), avaliableNetworks.get(i));
-            if(code.length()>6 && code.substring(0,6).contains("TraQR")){
-                return code;
+            try {
+                System.out.println(encryptedText);
+                System.out.println(Arrays.toString(Utils.stringToByteArray(encryptedText)));
+                String code = decrypt(Utils.stringToByteArray(encryptedText), avaliableNetworks.get(i));
+                System.out.println(code);
+                if (code.length() > 6 && code.substring(0, 6).contains("TraQR")) {
+                    System.out.println(code);
+                    return code;
+                }
+            }catch(Exception e){
+//                System.err.println("ERROR");
             }
         }
         return "";
@@ -61,18 +69,11 @@ public class QREncrypt {
 
     private static String decrypt(byte[] strEncrypted,String strKey) throws Exception{
         String strData="";
-
-        try {
             SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes("UTF-8"),encrpytAlgo);
             Cipher cipher=Cipher.getInstance(encrpytAlgo);
             cipher.init(Cipher.DECRYPT_MODE, skeyspec);
             byte[] decrypted=cipher.doFinal(strEncrypted);
             strData=new String(decrypted);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception(e);
-        }
         return strData;
     }
 
