@@ -14,10 +14,12 @@ import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.db.ItemDB;
 import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.model.Item;
+import com.tech.startup.club.traqr.utils.Utils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class AddItem extends AppCompatActivity {
     private EditText itemName;
@@ -53,9 +55,10 @@ public class AddItem extends AppCompatActivity {
                 startActivity(i);
                 try {
                     String encrypt = QREncrypt.encryptQRPlainText("925889db-22f5-4d58-9887-e927742ae40f", item);
-                    System.out.println("encrypt: " + encrypt);
-//                    String decrypt = QREncrypt.decryptQRPlainText(encrypt, "925889db-22f5-4d58-9887-e927742ae40f");
-                    System.out.println("decrypt: " + Arrays.toString(encrypt.getBytes(StandardCharsets.UTF_8)));
+                    System.out.println("encrypt: " + encrypt);;
+                    String decrypt = QREncrypt.decryptQRPlainText(encrypt, "925889db-22f5-4d58-9887-e927742ae40f");
+
+                    System.out.println("decrypt: " + decrypt);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

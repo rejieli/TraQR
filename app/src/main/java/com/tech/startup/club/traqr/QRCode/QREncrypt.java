@@ -4,6 +4,7 @@ import android.util.Base64;
 
 import com.tech.startup.club.traqr.model.Item;
 import com.tech.startup.club.traqr.model.Network;
+import com.tech.startup.club.traqr.utils.Utils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -25,7 +26,7 @@ public class QREncrypt {
 
     //THIS DOES NOT WORK YET
     public static String decryptQRPlainText(String encryptedText, String networkID) throws Exception {
-        return decrypt((encryptedText.getBytes(StandardCharsets.UTF_8)), networkID);
+        return decrypt(Utils.stringToByteArray(encryptedText), networkID);
     }
 
 
