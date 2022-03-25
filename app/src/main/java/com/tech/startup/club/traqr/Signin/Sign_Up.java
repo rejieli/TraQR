@@ -115,6 +115,7 @@ public class Sign_Up extends AppCompatActivity {
                                                 else {
                                                     Toast.makeText(Sign_Up.this, "You have not verified your email yet.", Toast.LENGTH_SHORT).show();
                                                 }*/
+                                                setContentView(R.layout.activity_login);
                                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                                 startActivity(intent);
                                             }
