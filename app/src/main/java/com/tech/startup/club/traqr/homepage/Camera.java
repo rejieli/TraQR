@@ -26,6 +26,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.UserDB;
+import com.tech.startup.club.traqr.network.AddNetwork;
 import com.tech.startup.club.traqr.swipe.item;
 import com.tech.startup.club.traqr.swipe.profile;
 
@@ -54,7 +56,15 @@ public class Camera extends AppCompatActivity {
             }, 100);
         }
 
-
+        //temporary qrcode button
+        Button addNetwork = (Button) findViewById(R.id.addNetwork);
+        addNetwork.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddNetwork.class);
+                startActivity(intent);
+            }
+        });
 
         //temporary qrcode button
         qrCode = (Button) findViewById(R.id.qrcode);
