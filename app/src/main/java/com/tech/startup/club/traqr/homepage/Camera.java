@@ -49,6 +49,10 @@ public class Camera extends AppCompatActivity {
         imageview = findViewById(R.id.imageView3);
         btOpenCam = findViewById(R.id.bt_cam);
 
+        //get all avaliable networks
+        UserDB.getUserNetworks();
+        //TO DO sort usernetworks again
+
         if(ContextCompat.checkSelfPermission(Camera.this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(Camera.this, new String[]{
