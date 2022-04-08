@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,6 +31,7 @@ import java.util.Map;
 public class UserDB {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static List<String> userNetworks = new ArrayList<String>();
     private static String selectedNetwork = "";
 
@@ -72,6 +74,37 @@ public class UserDB {
                         s.add(network.getNetworkID());
                         //querying back into db
                         document.getReference().update("networks", s).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (!task.isSuccessful()) {
+                                    System.out.println("ERROR");
+                                }
+                            }
+                        });
+                        break;
+                    }
+                }  else {
+                    System.err.println("USER COULD NOT BE FOUND");
+                }
+            }
+        });
+    }
+
+    //FOR RESORTING NETWORKS ONLY
+    public static void replaceUserNetworks(FirebaseUser user, List<String> network){
+        //generating query
+        Query query = db.collection("users").whereEqualTo("uuid", user.getUid());
+        //list of users found in db
+        List<User> foundUsers = new ArrayList<User>();
+
+        //excuting query
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        //querying back into db
+                        document.getReference().update("networks", network).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (!task.isSuccessful()) {
@@ -172,6 +205,7 @@ public class UserDB {
         //resorting networks
         int itemPos = userNetworks.indexOf(selectedNetwork);
         userNetworks.remove(itemPos);
-        userNetworks.add(0, selectedNetwork );
+        userNetworks.add(0, selectedNetwork);
+        replaceUserNetworks(mAuth.getCurrentUser(),userNetworks);
     }
 }

@@ -29,6 +29,8 @@ public class Sign_Up extends AppCompatActivity {
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
+    String name, email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,34 +69,63 @@ public class Sign_Up extends AppCompatActivity {
         });
     }
 
-    private void signUp(String name, String email, String password) {
+    private void signUp(String _name, String _email, String _password) {
+        name = _name;
+        email = _email;
         final EditText usernameEditText = (EditText)findViewById(R.id.username);
         final EditText emailEditText = (EditText)findViewById(R.id.email);
         final EditText passwordEditText = (EditText)findViewById(R.id.password);
         final EditText confirmPasswordEditText = (EditText)findViewById(R.id.confirm_password);
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(_email, _password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //log
-                            Log.d(TAG, "signInWithEmail:success");
+                            //send email verification
+                            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task2) {
+                                    if (task2.isSuccessful()) {
+                                        setContentView(R.layout.verify_email);
+                                        final Button doneButton = (Button)findViewById(R.id.doneButton);
+                                        doneButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                /*FirebaseAuth newDb = FirebaseAuth.getInstance();
+                                                if (newDb.getCurrentUser().isEmailVerified()) {
+                                                    //log
+                                                    Log.d(TAG, "signInWithEmail:success");
 
-                            //gets users auth
-                            FirebaseUser user = mAuth.getCurrentUser();
+                                                    //gets users auth
+                                                    FirebaseUser user = newDb.getCurrentUser();
 
-                            //Create new User in DB (NOT PART OF AUTHENTICATION)
-                            User newUser = new User(name, email);
-                            UserDB.createUser(newUser, Sign_Up.this);
+                                                    //Create new User in DB (NOT PART OF AUTHENTICATION)
+                                                    User newUser = new User(name, email);
+                                                    UserDB.createUser(newUser, Sign_Up.this);
 
-                            //Notify user of successful creation of new user
-                            Toast.makeText(Sign_Up.this, user.getUid(),
-                                    Toast.LENGTH_SHORT).show();
+                                                    //Notify user of successful creation of new user
+                                                    Toast.makeText(Sign_Up.this, user.getUid(),
+                                                            Toast.LENGTH_SHORT).show();
 
-                            //Start new intent (start camera class)
-                            Intent intent = new Intent(getApplicationContext(), Camera.class);
-                            startActivity(intent);
+                                                    //Start new intent (start camera class)
+                                                    Intent intent = new Intent(getApplicationContext(), Camera.class);
+                                                    startActivity(intent);
+                                                }
+                                                else {
+                                                    Toast.makeText(Sign_Up.this, "You have not verified your email yet.", Toast.LENGTH_SHORT).show();
+                                                }*/
+                                                setContentView(R.layout.activity_login);
+                                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        Toast.makeText(Sign_Up.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
