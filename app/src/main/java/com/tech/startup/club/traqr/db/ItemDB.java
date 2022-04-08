@@ -86,9 +86,8 @@ public class ItemDB {
         Query query = db.collection("items").whereEqualTo("itemID", itemID);//TODO check matching network ID
         //list of users found in db
         List<Item> foundItems = new ArrayList<Item>();
-
+        System.out.println(itemID);
         //TODO Add loading animation
-
         //excuting query
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -96,9 +95,8 @@ public class ItemDB {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
 
-
                         //changing lastScanned timestamp
-                        document.getReference().update("lastScanned", Timestamp.now(), "lastScannedUserID", userID).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        document.getReference().update("lastScanned", Timestamp.now()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (!task.isSuccessful()) {
@@ -106,14 +104,16 @@ public class ItemDB {
                                 }
                             }
                         });
-                        Item item = document.toObject(Item.class);
-                        item.setLastScanned(Timestamp.now());
-                        item.setLastScannedUserID(userID);
-
-                        //Passing info to new intent
-                        Intent intent = new Intent(context.getApplicationContext(), ItemData.class);
-                        intent.putExtra("Item", item);
-                        context.startActivity(intent);
+                        System.out.println(document.get("name"));
+//                        Item item = document.toObject(Item.class);
+//                        item.setLastScanned(Timestamp.now());
+//                        item.setLastScannedUserID(userID);
+//
+//                        //Passing info to new intent
+//                        Intent intent = new Intent(context.getApplicationContext(), ItemData.class);
+//                        intent.putExtra("Item", item);
+//                        System.out.println("ASDASd");
+//                        context.startActivity(intent);
                         break;
                     }
                 }  else {

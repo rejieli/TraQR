@@ -25,7 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.tech.startup.club.traqr.QRCode.QRCodeGenerator;
+import com.tech.startup.club.traqr.QRCode.QREncrypt;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.ItemDB;
 import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.network.AddNetwork;
 import com.tech.startup.club.traqr.swipe.item;
@@ -48,11 +50,9 @@ public class Camera extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         imageview = findViewById(R.id.imageView3);
         btOpenCam = findViewById(R.id.bt_cam);
-
-        //get all avaliable networks
+        mAuth = FirebaseAuth.getInstance();
         UserDB.getUserNetworks();
-        //TO DO sort usernetworks again
-
+        //TODO sort networks again
         if(ContextCompat.checkSelfPermission(Camera.this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(Camera.this, new String[]{
@@ -116,15 +116,20 @@ public class Camera extends AppCompatActivity {
             AlertDialog.Builder build = new AlertDialog.Builder(
                     Camera.this
             );
-            build.setTitle("Result");
-            build.setMessage(intRes.getContents());
-            build.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+            try {
+                String s = QREncrypt.decryptQRPlainText(intRes.getContents(),UserDB.getSelectedNetwork());
+                if(s.equals("")){
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                }else{
+                    //Order of array returns: UserID, NetworkID, ItemID
+                    String[]returns  = s.split(";");
+                    String itemID = returns[2];
+                    ItemDB.scanItemInfo(returns[2],returns[1],mAuth.getCurrentUser().getUid(),Camera.this);
                 }
-            });
-            build.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }else{
             Toast.makeText(getApplicationContext(), "No input",Toast.LENGTH_SHORT).show();
         }
