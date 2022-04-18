@@ -6,42 +6,32 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
-import android.os.Build;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.network.AddNetwork;
-import com.tech.startup.club.traqr.swipe.AddItem;
-import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
-import androidmads.library.qrgenearator.QRGSaver;
 
 public class QRCodeGenerator extends AppCompatActivity {
     private EditText qrvalue;
@@ -51,6 +41,8 @@ public class QRCodeGenerator extends AppCompatActivity {
     private QRGEncoder qrgEncoder;
     private AppCompatActivity activity;
     public static final String TAG = "ERROR";
+    private static int REQUEST_CODE = 100;
+    OutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +76,13 @@ public class QRCodeGenerator extends AppCompatActivity {
         }
 
         //Action Listener for save button
-        findViewById(R.id.save_barcode).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.save_qrcode).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    try {
-                        saveToInternalStorage(bitmap);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    saveImage();
                 } else {
-                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                    askPermission();
                 }
             }
         });
@@ -108,28 +96,51 @@ public class QRCodeGenerator extends AppCompatActivity {
             }
         });
 }
-    private String saveToInternalStorage(Bitmap bitmapImage){
-        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        // path to /data/data/yourapp/app_data/imageDir
-        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+    private void askPermission(){
+        ActivityCompat.requestPermissions(QRCodeGenerator.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+    }
 
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(mypath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_CODE) {
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                saveImage();
+            }
+            else{
+                Toast.makeText(QRCodeGenerator.this, "Please provide the required permissions", Toast.LENGTH_SHORT).show();
             }
         }
-        return directory.getAbsolutePath();
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+    private void saveImage(){
+        File dir = new File(Environment.getExternalStorageDirectory(), "SaveImage");
+        if(!dir.exists()){
+            dir.mkdir();
+        }
+        BitmapDrawable drawable = (BitmapDrawable) qrImage.getDrawable();
+        Bitmap bitmap1 = drawable.getBitmap();
+
+        File file = new File(dir, System.currentTimeMillis() + ".jpg");
+        try {
+            outputStream = new FileOutputStream(file);
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        Toast.makeText(QRCodeGenerator.this, "Successfuly Saved", Toast.LENGTH_SHORT).show();
+
+        try {
+            outputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
