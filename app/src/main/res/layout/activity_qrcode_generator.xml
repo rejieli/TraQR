@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/circle" />
 
     <Button
-        android:id="@+id/save_barcode"
+        android:id="@+id/save_qrcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="166dp"
@@ -44,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/save_barcode" />
+        app:layout_constraintTop_toBottomOf="@+id/save_qrcode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
