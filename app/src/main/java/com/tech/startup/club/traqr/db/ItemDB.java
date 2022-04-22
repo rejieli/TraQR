@@ -2,6 +2,7 @@ package com.tech.startup.club.traqr.db;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -105,15 +106,14 @@ public class ItemDB {
                             }
                         });
                         System.out.println(document.get("name"));
-//                        Item item = document.toObject(Item.class);
-//                        item.setLastScanned(Timestamp.now());
-//                        item.setLastScannedUserID(userID);
-//
-//                        //Passing info to new intent
-//                        Intent intent = new Intent(context.getApplicationContext(), ItemData.class);
-//                        intent.putExtra("Item", item);
-//                        System.out.println("ASDASd");
-//                        context.startActivity(intent);
+                        Item item = Item.toItem(document.getData());
+
+                        //Passing info to new intent
+                        Intent intent = new Intent(context.getApplicationContext(), ItemData.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("value", item);
+                        intent.putExtra("Item", bundle);
+                        context.startActivity(intent);
                         break;
                     }
                 }  else {
