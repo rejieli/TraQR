@@ -30,6 +30,7 @@ import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.db.ItemDB;
 import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.network.AddNetwork;
+import com.tech.startup.club.traqr.swipe.ItemData;
 import com.tech.startup.club.traqr.swipe.item;
 import com.tech.startup.club.traqr.swipe.profile;
 
@@ -124,7 +125,10 @@ public class Camera extends AppCompatActivity {
                     //Order of array returns: UserID, NetworkID, ItemID
                     String[]returns  = s.split(";");
                     String itemID = returns[2];
-                    ItemDB.scanItemInfo(returns[2],returns[1],mAuth.getCurrentUser().getUid(),Camera.this);
+                    Intent toItemData = new Intent(this, ItemData.class);
+                    toItemData.putExtra("value",s);
+                    startActivity(toItemData);
+                    //ItemDB.scanItemInfo(returns[2],returns[1],mAuth.getCurrentUser().getUid(),Camera.this);
                 }
 
             } catch (Exception e) {
