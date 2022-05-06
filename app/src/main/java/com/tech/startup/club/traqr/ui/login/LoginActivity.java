@@ -37,6 +37,7 @@ import com.tech.startup.club.traqr.homepage.Camera;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.databinding.ActivityLoginBinding;
 import com.tech.startup.club.traqr.homepage.Capture;
+import com.tech.startup.club.traqr.swipe.ItemData;
 import com.tech.startup.club.traqr.welcome.welcome;
 import com.tech.startup.club.traqr.Signin.Sign_Up;
 

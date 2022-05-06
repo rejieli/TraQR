@@ -52,7 +52,7 @@ public class ItemData extends AppCompatActivity {
         //query to find network
         Query query = db.collection("items").whereEqualTo("itemID", itemID);//TODO check matching network ID
         //list of users found in db
-        List<Item> foundItems = new ArrayList<Item>();
+        //List<Item> foundItems = new ArrayList<Item>();
         System.out.println(itemID);
         //TODO Add loading animation
         //excuting query
@@ -71,13 +71,23 @@ public class ItemData extends AppCompatActivity {
                                 }
                             }
                         });
-                        System.out.println(document.get("name"));
-                        System.out.println("HELLOs");
-                        Item item = Item.toItem(document.getData());
+                        //System.out.println(document.get("name"));
+                        //System.out.println("HELLOs");
+                        Item newItem = Item.toItem(document.getData());
 
                         //Passing info to new intent * need to fix
-                        final TextView data = (TextView) findViewById(R.id.data);
-                        data.setText(item.toString());
+                        final TextView name = (TextView)findViewById(R.id.name);
+                        name.setText(newItem.getName());
+                        final TextView networkID = (TextView)findViewById(R.id.networkID);
+                        networkID.setText(newItem.getNetworkID());
+                        final TextView lastScannedUser = (TextView)findViewById(R.id.lastScannedUser);
+                        lastScannedUser.setText(newItem.getLastScannedUserID());
+                        final TextView fields = (TextView)findViewById(R.id.fields);
+                        fields.setText(newItem.getFields().toString());
+                        /*String tempField = "";
+                        for (int i = 0; i < newItem.fields.size(); i++) {
+                            tempField += newItem.fields[] + ",\n";
+                        }*/
                         break;
                     }
                 }  else {
