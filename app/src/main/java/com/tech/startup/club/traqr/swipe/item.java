@@ -69,8 +69,8 @@ public class item extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull ItemInfo model) {
-                holder.list_itemid.setText(model.getItemID());
-                holder.list_lastScannedUserID.setText(model.getLastScannedUserId());
+//                holder.list_itemid.setText(model.getItemID());
+//                holder.list_lastScannedUserID.setText(model.getLastScannedUserId());
                 holder.list_name.setText(model.getName());
             }
         };
@@ -102,15 +102,15 @@ public class item extends AppCompatActivity {
 
     private class ItemViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView list_itemid;
-        private TextView list_lastScannedUserID;
+//        private TextView list_itemid;
+//        private TextView list_lastScannedUserID;
         private TextView list_name;
 
         public ItemViewHolder(@NonNull View itemView){
             super(itemView);
 
-            list_itemid = itemView.findViewById(R.id.list_itemid);
-            list_lastScannedUserID = itemView.findViewById(R.id.list_lastScannedUserID);
+//            list_itemid = itemView.findViewById(R.id.list_itemid);
+//            list_lastScannedUserID = itemView.findViewById(R.id.list_lastScannedUserID);
             list_name = itemView.findViewById(R.id.list_name);
         }
     }
