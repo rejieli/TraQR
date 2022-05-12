@@ -10,16 +10,91 @@
         android:id="@+id/imageView10"
         android:layout_width="129dp"
         android:layout_height="129dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:src="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/data"
-        android:layout_width="316dp"
-        android:layout_height="119dp"
-        android:text="Loading..."
-        android:textSize="17sp"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="251dp" />
+
+    <ScrollView
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Name:" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-20dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+            <TextView
+                android:id="@+id/networkLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Network ID:" />
+
+            <TextView
+                android:id="@+id/networkID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="-20dp" />
+
+            <TextView
+                android:id="@+id/scannedLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Last Scanned User:" />
+
+            <TextView
+                android:id="@+id/lastScannedUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="-20dp" />
+
+            <TextView
+                android:id="@+id/fieldsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Fields:" />
+
+            <TextView
+                android:id="@+id/fields"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-20dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

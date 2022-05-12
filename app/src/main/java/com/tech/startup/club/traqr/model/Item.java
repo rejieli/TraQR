@@ -5,6 +5,7 @@ import com.google.firebase.Timestamp;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Item implements Serializable {
@@ -79,5 +80,10 @@ public class Item implements Serializable {
                 ", lastScannedUserID='" + lastScannedUserID + '\'' +
                 ", fields=" + fields +
                 '}';
+    }
+
+    public static Item toItem(Map<String, Object> x){
+        Item y = new Item((String)x.get("networkID"), (String) x.get("name"), (String) x.get("lastScannedUserID"), (HashMap<String, Object>) x.get("fields"));
+        return y;
     }
 }
