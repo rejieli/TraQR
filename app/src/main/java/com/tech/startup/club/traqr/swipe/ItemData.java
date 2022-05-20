@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tech.startup.club.traqr.R;
 import com.tech.startup.club.traqr.model.Item;
+import com.tech.startup.club.traqr.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,9 @@ public class ItemData extends AppCompatActivity {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
-    String itemId, networkId, userId;
+    private Button editName;
+    private Button editFields;
+    private String itemId, networkId, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,21 @@ public class ItemData extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         scanItemInfo(itemId, networkId, userId, ItemData.this);
 
+        editName = (Button)findViewById(R.id.editName);
+        editName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        editFields = (Button)findViewById(R.id.editFields);
+        editFields.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public String getItemID() {
@@ -92,11 +112,11 @@ public class ItemData extends AppCompatActivity {
                         final TextView lastScannedUser = (TextView)findViewById(R.id.lastScannedUser);
                         lastScannedUser.setText(newItem.getLastScannedUserID());
                         final TextView fields = (TextView)findViewById(R.id.fields);
-                        fields.setText(newItem.getFields().toString());
-                        /*String tempField = "";
-                        for (int i = 0; i < newItem.fields.size(); i++) {
-                            tempField += newItem.fields[] + ",\n";
-                        }*/
+                        //fields.setText(newItem.getFields().toString());
+                        String tempField = "";
+                        for (int i = 0; i < newItem.getFields.size(); i++) {
+                            tempField += newItem.getFields() + ",\n";
+                        }
                         break;
                     }
                 }  else {
