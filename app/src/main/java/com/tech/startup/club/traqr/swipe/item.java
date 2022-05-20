@@ -1,15 +1,39 @@
 package com.tech.startup.club.traqr.swipe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.tech.startup.club.traqr.QRCode.QREncrypt;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.homepage.Camera;
+import com.tech.startup.club.traqr.model.Item;
+import com.tech.startup.club.traqr.ui.login.LoginActivity;
+import com.tech.startup.club.traqr.utils.ItemInfo;
 
 public class item extends AppCompatActivity {
     float x1;
@@ -17,6 +41,11 @@ public class item extends AppCompatActivity {
     float y1;
     float y2;
     private Button addItem;
+    private RecyclerView mFirestoreList;
+    private FirebaseFirestore firebaseFirestore;
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth;
+    private FirestoreRecyclerAdapter adapter;
 
 
     //Button to switch to add new item activity
@@ -33,6 +62,47 @@ public class item extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mFirestoreList = findViewById(R.id.firestore_list);
+
+        //Query
+        Query query = firebaseFirestore.collection("items");
+
+        // Configure recycler adapter options:
+//  * query is the Query object defined above.
+//  * Chat.class instructs the adapter to convert each DocumentSnapshot to a Chat object
+        FirestoreRecyclerOptions<ItemInfo> options = new FirestoreRecyclerOptions.Builder<ItemInfo>()
+                .setQuery(query, ItemInfo.class)
+                .build();
+        adapter = new FirestoreRecyclerAdapter<ItemInfo, ItemViewHolder>(options) {
+            @Override
+            public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
+                return new ItemViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull ItemInfo model) {
+//                holder.list_itemid.setText(model.getItemID());
+//                holder.list_lastScannedUserID.setText(model.getLastScannedUserId());
+                holder.list_name.setText(model.getName());
+                holder.list_name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent test = new Intent(item.this, ItemData.class);
+                        test.putExtra("value", "TraQR;" + model.getNetworkID() + ";" + model.getItemID());
+                        startActivity(test);
+                        //setContentView(R.layout.activity_item_data);
+                        //itemData.scanItemInfo("test", "test", "test", itemData);
+                    }
+                });
+            }
+        };
+
+        mFirestoreList.setHasFixedSize(true);
+        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
+        mFirestoreList.setAdapter(adapter);
     }
 
     //swipe back to main homepage
@@ -54,4 +124,31 @@ public class item extends AppCompatActivity {
             }
             return false;
         }
+
+    private class ItemViewHolder extends RecyclerView.ViewHolder{
+
+//        private TextView list_itemid;
+//        private TextView list_lastScannedUserID;
+        private TextView list_name;
+
+        public ItemViewHolder(@NonNull View itemView){
+            super(itemView);
+
+//            list_itemid = itemView.findViewById(R.id.list_itemid);
+//            list_lastScannedUserID = itemView.findViewById(R.id.list_lastScannedUserID);
+            list_name = itemView.findViewById(R.id.list_name);
+        }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+}

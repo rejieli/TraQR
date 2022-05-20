@@ -32,6 +32,7 @@ public class ItemData extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button editName;
     private Button editFields;
+    private String itemId, networkId, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,10 @@ public class ItemData extends AppCompatActivity {
         String x = bundle.getString("value");
         String[] tests = x.split(";");
         System.out.println(x);
-        scanItemInfo(tests[2], tests[1], mAuth.getCurrentUser().getUid(), ItemData.this);
+        itemId = tests[2];
+        networkId = tests[1];
+        userId = mAuth.getCurrentUser().getUid();
+        scanItemInfo(itemId, networkId, userId, ItemData.this);
 
         editName = (Button)findViewById(R.id.editName);
         editName.setOnClickListener(new View.OnClickListener(){
@@ -65,6 +69,10 @@ public class ItemData extends AppCompatActivity {
 
             }
         });
+    }
+
+    public String getItemID() {
+        return(itemId);
     }
 
     //Getting item info
@@ -91,6 +99,7 @@ public class ItemData extends AppCompatActivity {
                                 }
                             }
                         });
+
                         //System.out.println(document.get("name"));
                         //System.out.println("HELLOs");
                         Item newItem = Item.toItem(document.getData());
