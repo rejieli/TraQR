@@ -35,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
-                android:text="Name:" />
+                android:text="Name:"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/name"
@@ -45,10 +46,12 @@
                 android:layout_marginTop="-20dp" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
+                android:id="@+id/editName"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="-35dp"
+                android:text="Edit" />
 
             <TextView
                 android:id="@+id/networkLabel"
@@ -56,11 +59,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
-                android:text="Network ID:" />
+                android:text="Network ID:"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/networkID"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="85dp"
                 android:layout_marginTop="-20dp" />
@@ -71,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
-                android:text="Last Scanned User:" />
+                android:text="Last Scanned User:"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lastScannedUser"
@@ -86,7 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
-                android:text="Fields:" />
+                android:text="Fields:"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/fields"
@@ -94,6 +100,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="-20dp" />
+
+            <Button
+                android:id="@+id/editFields"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="-35dp"
+                android:text="Edit" />
 
         </LinearLayout>
     </ScrollView>
