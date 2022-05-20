@@ -4,16 +4,18 @@ public class ItemInfo {
     private String itemID;
 //    private String lastScanned;
     private String lastScannedUserId;
+    private String networkID;
     private String name;
 
     public ItemInfo(){
 
     }
-    public ItemInfo(String itemId, String lastScanned, String lastScannedUserId, String name){
+    public ItemInfo(String itemId, String lastScanned, String lastScannedUserId, String name, String networkId){
         this.itemID = itemId;
 //        this.lastScanned = lastScanned;
         this.lastScannedUserId = lastScannedUserId;
         this.name = name;
+        this.networkID = networkId;
     }
 
     public String getItemID() {
@@ -46,5 +48,9 @@ public class ItemInfo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNetworkID() {
+        return(this.networkID);
     }
 }

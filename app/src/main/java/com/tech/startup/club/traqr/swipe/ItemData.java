@@ -27,6 +27,7 @@ public class ItemData extends AppCompatActivity {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
+    String itemId, networkId, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,15 @@ public class ItemData extends AppCompatActivity {
         String x = bundle.getString("value");
         String[] tests = x.split(";");
         System.out.println(x);
-        scanItemInfo(tests[2], tests[1], mAuth.getCurrentUser().getUid(), ItemData.this);
+        itemId = tests[2];
+        networkId = tests[1];
+        userId = mAuth.getCurrentUser().getUid();
+        scanItemInfo(itemId, networkId, userId, ItemData.this);
 
+    }
+
+    public String getItemID() {
+        return(itemId);
     }
 
     //Getting item info
@@ -71,6 +79,7 @@ public class ItemData extends AppCompatActivity {
                                 }
                             }
                         });
+
                         //System.out.println(document.get("name"));
                         //System.out.println("HELLOs");
                         Item newItem = Item.toItem(document.getData());

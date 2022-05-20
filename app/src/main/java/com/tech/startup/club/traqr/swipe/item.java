@@ -13,13 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.tech.startup.club.traqr.QRCode.QREncrypt;
 import com.tech.startup.club.traqr.R;
+import com.tech.startup.club.traqr.db.UserDB;
 import com.tech.startup.club.traqr.homepage.Camera;
+import com.tech.startup.club.traqr.model.Item;
+import com.tech.startup.club.traqr.ui.login.LoginActivity;
 import com.tech.startup.club.traqr.utils.ItemInfo;
 
 public class item extends AppCompatActivity {
@@ -30,6 +43,8 @@ public class item extends AppCompatActivity {
     private Button addItem;
     private RecyclerView mFirestoreList;
     private FirebaseFirestore firebaseFirestore;
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth;
     private FirestoreRecyclerAdapter adapter;
 
 
@@ -72,6 +87,16 @@ public class item extends AppCompatActivity {
 //                holder.list_itemid.setText(model.getItemID());
 //                holder.list_lastScannedUserID.setText(model.getLastScannedUserId());
                 holder.list_name.setText(model.getName());
+                holder.list_name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent test = new Intent(item.this, ItemData.class);
+                        test.putExtra("value", "TraQR;" + model.getNetworkID() + ";" + model.getItemID());
+                        startActivity(test);
+                        //setContentView(R.layout.activity_item_data);
+                        //itemData.scanItemInfo("test", "test", "test", itemData);
+                    }
+                });
             }
         };
 
