@@ -64,7 +64,7 @@
 
             <TextView
                 android:id="@+id/networkID"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="85dp"
                 android:layout_marginTop="-20dp" />
